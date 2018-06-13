@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  cli:
+    environment:
+      - MYSQL_DB
+      - MYSQL_PASSWORD
+      - MYSQL_USER
+      - SIMPLETEST_BASE_URL
+      - SIMPLETEST_DB
