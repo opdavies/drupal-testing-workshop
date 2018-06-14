@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f91f9dbdac508c0fe2b2a0c9210d6463",
+    "content-hash": "7f3180809f7c62322890cc34f4ba0502",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1847,6 +1847,27 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "time": "2018-06-06T21:02:51+00:00"
+        },
+        {
+            "name": "drupal/tdd_dublin",
+            "version": "dev-8.x-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opdavies/drupal-module-tdd-dublin.git",
+                "reference": "5be880e496cf7949c70f16b09d1e7b795b29e5f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opdavies/drupal-module-tdd-dublin/zipball/5be880e496cf7949c70f16b09d1e7b795b29e5f0",
+                "reference": "5be880e496cf7949c70f16b09d1e7b795b29e5f0",
+                "shasum": ""
+            },
+            "type": "drupal-custom-module",
+            "support": {
+                "source": "https://github.com/opdavies/drupal-module-tdd-dublin/tree/8.x-1.x",
+                "issues": "https://github.com/opdavies/drupal-module-tdd-dublin/issues"
+            },
+            "time": "2018-06-14T08:52:58+00:00"
         },
         {
             "name": "drush/drush",
@@ -7179,7 +7200,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "drupal/tdd_dublin": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

@@ -3,6 +3,7 @@
 /vendor/
 /web/core/
 /web/modules/contrib/
+/web/modules/custom/tdd_dublin/
 /web/themes/contrib/
 /web/profiles/contrib/
 /web/libraries/
