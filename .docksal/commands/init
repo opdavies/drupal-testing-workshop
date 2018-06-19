@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
 ## Initialise the project
+fin start
 
 # Download project dependencies.
 fin run composer install
 
 # Install Drupal.
-fin drush site-install -y --account-pass=test --site-name='Drupal Testing Workshop'
+fin drush site-install -y \
+  --account-pass=admin \
+  --site-name='Drupal Testing Workshop'
+
 fin uli
