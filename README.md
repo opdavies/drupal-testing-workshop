@@ -6,7 +6,6 @@ A base Drupal 8 installation for use in the Drupal testing workshop. Pre-configu
 
 ```
 git clone https://github.com/opdavies/drupal-testing-workshop.git
-fin start
 fin init
 ```
 
