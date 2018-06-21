@@ -11,6 +11,8 @@ fin init
 
 Open `http://drupaltest.docksal`.
 
+Run `fin phpunit web/modules/contrib/examples/phpunit_example` to run the first tests!
+
 ## Running Tests
 
 ```
