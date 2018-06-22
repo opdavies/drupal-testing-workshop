@@ -774,7 +774,7 @@ $settings['entity_update_batch_size'] = 50;
 /**
  * Load Docksal settings.
  */
-if (file_exists('/.dockerenv') && file_exists(__DIR__ . '/docksal.settings.php')) {
+if (file_exists('/.dockerenv') && file_exists(__DIR__ . '/docksal.settings.php') && !getenv('SIMPLETEST_BASE_URL')) {
   include __DIR__ . '/docksal.settings.php';
 }
 
