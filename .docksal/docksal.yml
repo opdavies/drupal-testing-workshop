@@ -7,9 +7,7 @@ services:
       - MYSQL_DB
       - MYSQL_PASSWORD
       - MYSQL_USER
-      - SIMPLETEST_BASE_URL
-      - SIMPLETEST_DB
-  # PHPMyAdmin
+
   pma:
     hostname: pma
     image: phpmyadmin/phpmyadmin
