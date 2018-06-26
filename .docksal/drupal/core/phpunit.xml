@@ -9,6 +9,8 @@
   <php>
     <ini name="error_reporting" value="32767"/>
     <ini name="memory_limit" value="-1"/>
+    <env name="SIMPLETEST_BASE_URL" value="http://drupaltest.docksal"/>
+    <env name="SIMPLETEST_DB" value="sqlite://localhost//tmp/db.sqlite"/>
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak_vendors"/>
   </php>
   <testsuites>
