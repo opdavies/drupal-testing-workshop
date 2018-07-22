@@ -2,16 +2,14 @@
 
 A base Drupal 8 installation for use in the Drupal testing workshop. Pre-configured with Docksal, including the PHPUnit add-on.
 
-## Initial Setup
+## Setup
 
-```
+```bash
 git clone https://github.com/opdavies/drupal-testing-workshop.git
+cd drupal-testing-workshop
 fin init
+fin phpunit web/modules/contrib/examples/phpunit_example
 ```
-
-Open `http://drupaltest.docksal`.
-
-Run `fin phpunit web/modules/contrib/examples/phpunit_example` to run the first tests!
 
 ## Running Tests
 
