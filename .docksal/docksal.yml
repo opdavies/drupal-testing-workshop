@@ -4,7 +4,7 @@ services:
   cli:
     environment:
       - DOCROOT
-      - MYSQL_DB
+      - MYSQL_DATABASE
       - MYSQL_PASSWORD
       - MYSQL_USER
 
