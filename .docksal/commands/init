@@ -11,6 +11,6 @@ fin drush site-install -y \
   --account-pass=admin \
   --site-name='Drupal Testing Workshop'
 
-fin drush pm:enable -y admin_toolbar
+fin drush pm:enable -y admin_toolbar simpletest
 
 fin uli
