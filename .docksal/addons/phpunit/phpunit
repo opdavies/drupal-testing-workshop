@@ -7,8 +7,7 @@
 ## Usage: fin phpunit <args>
 ##
 ## This first ensures that a `core/phpunit.xml` file exists, either by copying a
-## stub from `.docksal/drupal/core/phpunit.xml` if that exists, or copying and
-## renaming `core/phpunit.xml.dist`.
+## stub, or copying and renaming `core/phpunit.xml.dist`.
 ##
 ## If `core/phpunit.xml` exists, the phpunit command with then be run, appending
 ## any optional arguments such as the directory path (run `fin phpunit -h`) to
@@ -30,14 +29,17 @@ if [ ! -e ${DRUPAL_CORE_PATH}/phpunit.xml ]; then
     STUB_PATH="${PROJECT_ROOT}/.docksal/addons/phpunit/stubs"
     OLD_STUB_PATH="${PROJECT_ROOT}/.docksal/drupal"
 
+    # Copy from new stub path.
     if [ -e $STUB_PATH ]; then
-        # New path
         copy_stubs $STUB_PATH
         run_tests "$@"
+
+    # Deprecated: Copy from old stub path.
     elif [ -e $OLD_STUB_PATH ]; then
-        # Deprecated: old path
         copy_stubs $OLD_STUB_PATH
         run_tests "$@"
+
+    # Fallback: duplicate and rename phpunit.xml.dist.
     else
         echo "Copying phpunit.xml.dist to phpunit.xml."
         echo "Please edit it's values as needed and re-run 'fin phpunit'."
