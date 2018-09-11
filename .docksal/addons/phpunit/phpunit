@@ -25,27 +25,31 @@ run_tests() {
     ${PROJECT_ROOT}/vendor/bin/phpunit -c $DRUPAL_CORE_PATH "$@"
 }
 
-if [ ! -e ${DRUPAL_CORE_PATH}/phpunit.xml ]; then
-    STUB_PATH="${PROJECT_ROOT}/.docksal/addons/phpunit/stubs"
-    OLD_STUB_PATH="${PROJECT_ROOT}/.docksal/drupal"
-
-    # Copy from new stub path.
-    if [ -e $STUB_PATH ]; then
-        copy_stubs $STUB_PATH
-        run_tests "$@"
-
-    # Deprecated: Copy from old stub path.
-    elif [ -e $OLD_STUB_PATH ]; then
-        copy_stubs $OLD_STUB_PATH
-        run_tests "$@"
-
-    # Fallback: duplicate and rename phpunit.xml.dist.
-    else
-        echo "Copying phpunit.xml.dist to phpunit.xml."
-        echo "Please edit it's values as needed and re-run 'fin phpunit'."
-        cp ${DRUPAL_CORE_PATH}/phpunit.xml.dist ${DRUPAL_CORE_PATH}/phpunit.xml
-        exit 1;
-    fi
-else
+# If `core/phpunit.xml` already exists, we can go ahead and run the tests.
+if [ -e ${DRUPAL_CORE_PATH}/phpunit.xml ]; then
     run_tests "$@"
+    exit
 fi
+
+# Copy files from stub path.
+STUB_PATH="${PROJECT_ROOT}/.docksal/addons/phpunit/stubs"
+if [ -e $STUB_PATH ]; then
+    copy_stubs $STUB_PATH
+    run_tests "$@"
+    exit
+fi
+
+# Deprecated: Copy files from old stub path.
+OLD_STUB_PATH="${PROJECT_ROOT}/.docksal/drupal"
+if [ -e $OLD_STUB_PATH ]; then
+    # TODO: Display message to user.
+    copy_stubs $OLD_STUB_PATH
+    run_tests "$@"
+    exit
+fi
+
+# Fallback: duplicate and rename phpunit.xml.dist.
+echo "Copying phpunit.xml.dist to phpunit.xml."
+echo "Please edit it's values as needed and re-run 'fin phpunit'."
+cp ${DRUPAL_CORE_PATH}/phpunit.xml.dist ${DRUPAL_CORE_PATH}/phpunit.xml
+exit 1;
