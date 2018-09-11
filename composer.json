@@ -46,20 +46,10 @@
         "files": ["load.environment.php"]
     },
     "scripts": {
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion",
-            "@composer drupal:scaffold"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion",
-            "@composer drupal:scaffold"
-        ],
-        "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
+        "pre-install-cmd": "DrupalProject\\composer\\ScriptHandler::checkComposerVersion",
+        "pre-update-cmd": "DrupalProject\\composer\\ScriptHandler::checkComposerVersion",
+        "post-install-cmd": "@drupal-scaffold",
+        "post-update-cmd": "@drupal-scaffold",
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
     },
     "extra": {
