@@ -47,17 +47,20 @@
     },
     "scripts": {
         "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion",
+            "@composer drupal:scaffold"
         ],
         "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion",
+            "@composer drupal:scaffold"
         ],
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
+        ],
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
     },
     "extra": {
         "installer-paths": {
@@ -67,6 +70,14 @@
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/Commands/{$name}": ["type:drupal-drush"]
+        },
+        "drupal-scaffold": {
+            "source": "https://cgit.drupalcode.org/drupal/plain/{path}?h={version}",
+            "initial": {
+                "sites/default/default.services.yml": "sites/default/services.yml",
+                "sites/example.settings.local.php": "sites/default/local.settings.php"
+            },
+            "omit-defaults": false
         }
     }
 }
