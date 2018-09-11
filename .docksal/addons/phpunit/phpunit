@@ -17,14 +17,26 @@
 DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
 DRUPAL_CORE_PATH="${DOCROOT_PATH}/core"
 
+copy_stubs() {
+    echo "Copying $1 to $DOCROOT_PATH"
+    cp -R $1/* $DOCROOT_PATH
+}
+
 run_tests() {
-    ${PROJECT_ROOT}/vendor/bin/phpunit -c ${DRUPAL_CORE_PATH} "$@"
+    ${PROJECT_ROOT}/vendor/bin/phpunit -c $DRUPAL_CORE_PATH "$@"
 }
 
 if [ ! -e ${DRUPAL_CORE_PATH}/phpunit.xml ]; then
-    if [ -e "${PROJECT_ROOT}/.docksal/drupal/core/phpunit.xml" ]; then
-        echo "Copying ${PROJECT_ROOT}/.docksal/drupal/core/phpunit.xml to ${DRUPAL_CORE_PATH}/phpunit.xml"
-        cp "${PROJECT_ROOT}/.docksal/drupal/core/phpunit.xml" ${DRUPAL_CORE_PATH}/phpunit.xml
+    STUB_PATH="${PROJECT_ROOT}/.docksal/addons/phpunit/stubs"
+    OLD_STUB_PATH="${PROJECT_ROOT}/.docksal/drupal"
+
+    if [ -e $STUB_PATH ]; then
+        # New path
+        copy_stubs $STUB_PATH
+        run_tests "$@"
+    elif [ -e $OLD_STUB_PATH ]; then
+        # Deprecated: old path
+        copy_stubs $OLD_STUB_PATH
         run_tests "$@"
     else
         echo "Copying phpunit.xml.dist to phpunit.xml."
